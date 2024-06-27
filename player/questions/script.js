@@ -1,62 +1,92 @@
-function expandBox1() {
-    var box1 = document.getElementById('Box1');
-    var otherBoxes = document.querySelectorAll('#Box2, #Box3, #Box4');
-    
-    box1.classList.toggle('expanded');
-    otherBoxes.forEach(box => box.classList.toggle('hidden'));
+var time = 10;
+var answer = 0;
+var answer_expectet = 3;
+var user_interaction = false
 
-    if (box1.classList.contains('expanded')) {
-        box1.textContent = 'falsch';
-    } else {
-        box1.textContent = 'A';
+function expandBox(self, selectedAnswer) { 
+    answer = selectedAnswer
+    var user_interaction = true
+    var box1 = document.getElementById('Box');
+    var otherBoxes = document.querySelectorAll('#Box1, #Box2, #Box3, #Box4');
+
+    if (!box1.classList.contains('expanded')) {
+        box1.classList.add('expanded');
+        otherBoxes.forEach(box => box.classList.add('hidden'));
+        showLoader(box1);
     }
 }
 
-function expandBox2() {
-    var box2 = document.getElementById('Box2');
-    var otherBoxes = document.querySelectorAll('#Box1, #Box3, #Box4');
-    
-    box2.classList.toggle('expanded');
-    otherBoxes.forEach(box => box.classList.toggle('hidden'));
-
-    if (box2.classList.contains('expanded')) {
-        box2.textContent = 'falsch';
-    } else {
-        box2.textContent = 'B';
-    }
+function updateAnswerDisplay() {
+    answerDisplay.textContent = 'Selected Answer: ' + answer;
+    console.log(answer); // Log answer to console
 }
 
-function expandBox3() {
-    var box3 = document.getElementById('Box3');
-    var otherBoxes = document.querySelectorAll('#Box1, #Box2, #Box4');
-    
-    box3.classList.toggle('expanded');
-    otherBoxes.forEach(box => box.classList.toggle('hidden'));
+function showLoader(box) {
+    // Add a loader to the box
+    var loader = document.createElement('div');
+    loader.className = 'loader';
+    loader.innerHTML = '<div class="ball"></div><div class="ball"></div><div class="ball"></div>';
+    box.innerHTML = '';  // Clear the box content
+    box.appendChild(loader); 
 
-    if (box3.classList.contains('expanded')) {
-        box3.textContent = 'richtig';
-    } else {
-        box3.textContent = 'C';
-    }
+const duration = time; // Duration in seconds
+    const progressBar = document.getElementById('progress-bar');
+    let width = 100; // Initial width in percentage
+    let timeLeft = duration; // Remaining time in seconds
+    const updateRate = 10; // Update rate in milliseconds
+
+    const interval = setInterval(() => {
+        timeLeft -= updateRate / 1000;
+        width = (timeLeft / duration) * 100;
+        progressBar.style.width = width + '%';
+
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            box.removeChild(loader);
+            box.innerHTML = 'Loading is complete. Here is the new content!';
+        }
+    }, updateRate);
 }
 
-function expandBox4() {
-    var box4 = document.getElementById('Box4');
-    var otherBoxes = document.querySelectorAll('#Box1, #Box2, #Box3');
-    
-    box4.classList.toggle('expanded');
-    otherBoxes.forEach(box => box.classList.toggle('hidden'));
+function showLoader(box) {
+    // Create the loader element
+    var loader = document.createElement('div');
+    loader.classList.add('loader');
+    loader.innerHTML = '<div class="ball"></div><div class="ball"></div><div class="ball"></div>';
 
-    if (box4.classList.contains('expanded')) {
-        box4.textContent = 'falsch';
-    } else {
-        box4.textContent = 'D';
-    }
+    // Clear the box content and append the loader
+    box.textContent = '';
+    box.appendChild(loader);
 }
 
+function removeLoader(box) {
+    var loader = box.querySelector('.loader');
+    if (loader) {
+        loader.remove();
+    }
+}
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const duration = 30; // Dauer in Sekunden
+    const duration = time; // Duration in seconds
+    const progressBar = document.getElementById('progress-bar');
+    let width = 100; // Initial width in percentage
+    let timeLeft = duration; // Remaining time in seconds
+    const updateRate = 10; // Update rate in milliseconds
+
+    const interval = setInterval(() => {
+        timeLeft -= updateRate / 1000;
+        width = (timeLeft / duration) * 100;
+        progressBar.style.width = width + '%';
+
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            document.querySelectorAll('.loader').forEach(loader => loader.style.display = 'none');
+        }
+    }, updateRate);
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const duration = time; // Dauer in Sekunden
     const progressBar = document.getElementById('progress-bar');
     let width = 100; // Anfangsbreite in Prozent
     let timeLeft = duration; // Verbleibende Zeit in Sekunden
@@ -72,3 +102,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }, updateRate);
 });
+
+//export { answer };
