@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Questions</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="main">
-        <div class="head">Hier steht die unglaublich Schlaue Frage</div>
+        <div class="head">Eine gute Frage</div>
         <div class="container">
-            <div class="box" id="Box1" onclick="expandBox1()">A</div>
-            <div class="box" id="Box2" onclick="expandBox2()">B</div>
-            <div class="box" id="Box3" onclick="expandBox3()">C</div>
-            <div class="box" id="Box4" onclick="expandBox4()">D</div>
+            <div class="box" id="answer"></div>
+            <div class="box" id="Box1" onclick="expandBox(this, 1)">A</div>
+            <div class="box" id="Box2" onclick="expandBox(this, 2)">B</div>
+            <div class="box" id="Box3" onclick="expandBox(this, 3)">C</div>
+            <div class="box" id="Box4" onclick="expandBox(this, 4)">D</div>
         </div>
         <div class="progress-container">
             <div id="progress-bar"></div>
