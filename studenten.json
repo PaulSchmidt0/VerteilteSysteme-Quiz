@@ -1,17 +1,17 @@
 [
     {
-        "name": "Alice"
-        "Punktzahl": 0
+        "name": "Alice",
+        "Punktzahl": 0,
         "isActive": true
     },
     {
-        "name": "Bob"
-        "Punktzahl": 0
+        "name": "Bob",
+        "Punktzahl": 0,
         "isActive": true
     },
     {
-        "name": "Charlie"
-        "Punktzahl": 0
+        "name": "Charlie",
+        "Punktzahl": 0,
         "isActive": true
     }
 ]
