@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    align-items: center; /* Zentriert den Inhalt vertikal */
+    height: 100vh; /* Nimmt die volle Höhe des Viewports ein */
+    margin: 0; /* Entfernt den Standardrand des body */
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Abstand zwischen den Containern */
+    width: 70%;
+    height: 50vh; /* Gesamte Höhe des Viewports */
+    margin: auto;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000; /* Rand um die Boxen */
+    padding: 20px;
+    border-radius: 5px;
+    font-size:  300%;
+    transition: all ease-in-out 0.2s;
+}
+
+.box:hover {
+    background-color: rgb(236, 235, 235);
+    transform: translateY(-10px)
+}
