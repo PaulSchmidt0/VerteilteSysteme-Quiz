@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    align-items: center; /* Zentriert den Inhalt vertikal */
+    height: 100vh; /* Nimmt die volle Höhe des Viewports ein */
+    margin: 0; /* Entfernt den Standardrand des body */
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Abstand zwischen den Containern */
+    width: 70%;
+    height: 50vh; /* Gesamte Höhe des Viewports */
+    margin: auto;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 5px;
+    font-size:  300%;
+    transition: all ease-in-out 0.2s;
+    background-color:white;
+}
+
+.box:hover {
+    transform: translateY(-10px)
+}

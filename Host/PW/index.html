@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwortabfrage</title>
+    <style>
+        /* Einfache Styling für das Formular */
+        #passwordForm {
+            margin: 100px auto;
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        input[type="password"], button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordForm">
+        <h2>Passwortabfrage</h2>
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" onclick="checkPassword()">Einloggen</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const enteredPassword = document.getElementById('password').value;
+            const correctPassword = 'Eichberg_Prof';  // Ersetzen Sie dies durch das tatsächliche Passwort
+            const redirectUrl = '/start';  // Ersetzen Sie dies durch die Ziel-URL
+
+            if (enteredPassword === correctPassword) {
+                window.location.href = redirectUrl;
+            } else {
+                document.getElementById('message').textContent = 'Falsches Passwort. Bitte versuchen Sie es erneut.';
+                document.getElementById('message').style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
